@@ -1,6 +1,10 @@
 package vn.iotstar.demo.Model;
 import java.util.*;
 
+import org.springframework.beans.BeanUtils;
+
+import vn.iotstar.demo.DAO.DBConnection;
+
 /**
  * 
  */
@@ -11,7 +15,10 @@ public class Product {
      */
     public Product() {
     }
-
+    /**
+     * 
+     */
+    private int productId;
     /**
      * 
      */
@@ -109,6 +116,14 @@ public class Product {
      * @return
      */
     public boolean addNewProduct(Product productInfo, int quantity) {
+    	if (validateInfo()) {
+    		Product newProduct = new Product();
+    		BeanUtils.copyProperties(productInfo, newProduct);
+    		Inventory inventory = new Inventory(newProduct,quantity);
+    		DBConnection conn = new DBConnection();
+    		conn.save(inventory);
+    		return true;
+    	}
         // TODO implement here
         return false;
     }
@@ -126,8 +141,10 @@ public class Product {
      * @return
      */
     public Product findById(int productId) {
+    	DBConnection conn = new DBConnection();
+    	Product newProduct = conn.findProductById(productId);
         // TODO implement here
-        return null;
+        return newProduct;
     }
 
     /**
@@ -145,6 +162,11 @@ public class Product {
      * @return
      */
     public boolean updateProduct(Product ProductInfo , int quantity ) {
+    	if (validateInfo())
+    	{
+    		Inventory inventory = new Inventory();
+    		inventory.updateQuantity(ProductInfo.productId, quantity);
+    	}
         // TODO implement here
         return false;
     }

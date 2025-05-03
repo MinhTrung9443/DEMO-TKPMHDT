@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.springframework.stereotype.Controller;
 
+import vn.iotstar.demo.Model.Cart;
 import vn.iotstar.demo.Model.Order;
 
 /**
@@ -21,6 +22,10 @@ public class OrderController {
      * 
      */
     private Order order;
+    /**
+     * 
+     */
+    private Cart cart;
 
     /**
      * @param previewOrder  
@@ -34,6 +39,7 @@ public class OrderController {
      * @param cartItemIds
      */
     public void getPreviewOrder(List<Integer> cartItemIds ) {
+    	Map<String, List<String>> preview = cart.getPreviewOrder(cartItemIds);
         // TODO implement here
     }
 
