@@ -23,21 +23,22 @@ public class DBConnection {
     private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=test;encrypt=true;trustServerCertificate=true";
     private static final String USER = "sa";
     private static final String PASSWORD = "123456";
+    private static Connection connection;
 
     // Hàm tĩnh để lấy kết nối
     public static Connection getConnection() throws SQLException {
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            return DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("JDBC Driver not found", e);
+        if (connection == null) {
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            } catch (ClassNotFoundException e) {
+                throw new SQLException("JDBC Driver not found", e);
+            }
         }
+        return connection;
     }
-    
-    /**
-     * Default constructor
-     */
-    public DBConnection() {
+    //private constructor
+    private DBConnection() {
     }
 
     /**
@@ -58,7 +59,7 @@ public class DBConnection {
      * @param cartItemId  
      * @return
      */
-    public CartItem findCartItemById(int cartItemId ) {
+    public static CartItem findCartItemById(int cartItemId ) {
         // TODO implement here
         return null;
     }
@@ -67,7 +68,7 @@ public class DBConnection {
      * @param productId 
      * @return
      */
-    public Product findProductById(int productId) {
+    public static Product findProductById(int productId) {
         // TODO implement here
         return null;
     }
@@ -108,7 +109,7 @@ public class DBConnection {
     /**
      * @param inventory
      */
-    public void save(Inventory inventory) {
+    public static void save(Inventory inventory) {
         // TODO implement here
     }
 
@@ -116,7 +117,7 @@ public class DBConnection {
      * @param productId 
      * @return
      */
-    public Inventory findInventoryByProductId(int productId) {
+    public static Inventory findInventoryByProductId(int productId) {
         // TODO implement here
         return null;
     }
@@ -124,7 +125,7 @@ public class DBConnection {
     /**
      * @param productId
      */
-    public void checkProductQuantity(int productId) {
+    public static void checkProductQuantity(int productId) {
         // TODO implement here
     }
 
@@ -141,10 +142,6 @@ public class DBConnection {
     /**
      * @return
      */
-    public Connection getSingletonInstance() {
-        // TODO implement here
-        return null;
-    }
 
     
 }
