@@ -47,7 +47,7 @@ public class Order {
      * @param productid 
      * @return
      */
-    public boolean checkAlreadyReview(int productid) {
+    public static boolean checkAlreadyReview(int productid) {
         // TODO implement here
         return false;
     }

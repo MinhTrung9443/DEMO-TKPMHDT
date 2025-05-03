@@ -1,4 +1,6 @@
 package vn.iotstar.demo.Model;
+import vn.iotstar.demo.DAO.DBConnection;
+
 import java.util.*;
 
 /**
@@ -37,7 +39,17 @@ public class Review {
      */
     public boolean submitReview(int orderId, int productId, int star, String text, String image) {
         // TODO implement here
-        return false;
+        validateReviewContent(star,text,image);
+        // TODO implement here
+        filter(text);
+        // TODO implement here
+        Order.checkAlreadyReview(orderId, productId);
+        // TODO implement here
+        uploadImage(image);
+        // TODO implement here
+        DBConnection.addReview(this);
+        // TODO implement here
+        return true;
     }
 
     /**

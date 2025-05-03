@@ -101,7 +101,7 @@ public class DBConnection {
     /**
      * @param reivew
      */
-    public void addReview(Review reivew) {
+    public static void addReview(Review reivew) {
         // TODO implement here
     }
 

@@ -40,5 +40,7 @@ public class ReviewController {
      */
     public void submitReview(int orderId, int productId, int star, String text, String image) {
         // TODO implement here
+        review.submitReview(orderId, productId, star, text, image);
+        // TODO implement here
     }
 }
