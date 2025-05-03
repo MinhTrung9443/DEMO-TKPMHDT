@@ -62,7 +62,8 @@ public class Order {
             orderLineItem.setOrder(this);
             this.addOrderLineItem(orderLineItem);
             cart.remove(item);
-            inventory.updateQuantity(item.getProductId(), item.getQuantity());
+            // TODO implement here
+            inventory.updateQuantity(productId, quantity);
         }
         initializeOrder(this);
         paymentStrategy=paymentStrategyFactory.getPaymentStrategy(paymentMethod);
