@@ -28,6 +28,9 @@ public class ReviewController {
      */
     public void getReview(int orderId , int productId) {
         // TODO implement here
+        review.getReview(orderId, productId);
+        // TODO implement here
+
     }
 
     /**

@@ -133,7 +133,7 @@ public class DBConnection {
      * @param productId 
      * @return
      */
-    public Review getReview(int orderId, int productId) {
+    public static Review getReview(int orderId, int productId) {
         // TODO implement here
         return null;
     }

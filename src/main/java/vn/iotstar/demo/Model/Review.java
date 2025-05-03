@@ -88,7 +88,8 @@ public class Review {
      */
     public Review getReview(int orderId, int productId) {
         // TODO implement here
-        return null;
+        Review review = DBConnection.getReview(orderId, productId);
+        return review;
     }
 
 }
