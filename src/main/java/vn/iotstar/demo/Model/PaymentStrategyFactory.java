@@ -17,7 +17,11 @@ public class PaymentStrategyFactory {
      * @return
      */
     public IPaymentStrategy getPaymentStrategy(String paymentMethod) {
-        // TODO implement here
+        if (paymentMethod == "COD") {
+            return new CODPayment();
+        } else if (paymentMethod == "VNPAY") {
+            return new VNPAYPayment();
+        }
         return null;
     }
 

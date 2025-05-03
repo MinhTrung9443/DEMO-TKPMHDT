@@ -27,6 +27,7 @@ public class OrderController {
      * @param paymentMethod
      */
     public void makePayment(Map previewOrder , String paymentMethod) {
+        order.makePayment(previewOrder, paymentMethod);
         // TODO implement here
     }
 

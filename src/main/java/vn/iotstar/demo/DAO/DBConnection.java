@@ -50,7 +50,7 @@ public class DBConnection {
     /**
      * @param order
      */
-    public void updateOrder(Order order) {
+    public static void updateOrder(Order order) {
         // TODO implement here
     }
 

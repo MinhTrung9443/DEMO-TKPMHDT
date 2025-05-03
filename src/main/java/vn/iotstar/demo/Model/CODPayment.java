@@ -1,10 +1,12 @@
 package vn.iotstar.demo.Model;
+import vn.iotstar.demo.DAO.DBConnection;
+
 import java.util.*;
 
 /**
  * 
  */
-public class CODPayment {
+public class CODPayment implements IPaymentStrategy{
 
     /**
      * Default constructor
@@ -15,7 +17,9 @@ public class CODPayment {
     /**
      * @param order
      */
-    public void processPayment(Order order) {
+    public boolean processPayment(Order order) {
+        // TODO implement here
+        DBConnection.updateOrder(order);
         // TODO implement here
     }
 
