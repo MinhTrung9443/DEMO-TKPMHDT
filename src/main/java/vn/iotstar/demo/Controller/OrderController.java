@@ -51,6 +51,8 @@ public class OrderController {
      */
     public void displayAllOrder() {
         // TODO implement here
+        List<Order> orders = order.getAllOrder();
+        // TODO implement here
     }
 
 }

@@ -39,7 +39,8 @@ public class Order {
      */
     public List<Order> getAllOrder() {
         // TODO implement here
-        return null;
+        List<Order> orders = DBConnection.getAllOrder();
+        return orders;
     }
 
     /**

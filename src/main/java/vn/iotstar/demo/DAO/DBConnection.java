@@ -93,7 +93,7 @@ public class DBConnection {
     /**
      * @return
      */
-    public List<Order> getAllOrder() {
+    public static List<Order> getAllOrder() {
         // TODO implement here
         return null;
     }
