@@ -43,7 +43,7 @@ public class DBConnection {
     /**
      * @param order
      */
-    public void saveOrder(Order order) {
+    public static void saveOrder(Order order) {
         // TODO implement here
     }
 
@@ -76,7 +76,7 @@ public class DBConnection {
      * @param orderId 
      * @return
      */
-    public Order getOrder(int orderId) {
+    public static Order getOrder(int orderId) {
         // TODO implement here
         return null;
     }
@@ -85,7 +85,7 @@ public class DBConnection {
      * @param orderId 
      * @return
      */
-    public Payment getPaymentInfo(int orderId) {
+    public static Payment getPaymentInfo(int orderId) {
         // TODO implement here
         return null;
     }

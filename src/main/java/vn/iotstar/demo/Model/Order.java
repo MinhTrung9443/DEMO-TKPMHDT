@@ -19,6 +19,7 @@ public class Order {
     private Inventory inventory;
     private Product product;
     private Cart cart;
+    private Payment payment;
 
     /**
      * @param orderId 
@@ -26,7 +27,11 @@ public class Order {
      */
     public Order getOrderHistory(int orderId) {
         // TODO implement here
-        return null;
+        Order order = DBConnection.getOrder(orderId);
+        Payment paymnt= payment.getPaymentInfo(orderId);
+        // TODO implement here
+        //do something
+        return result;
     }
 
     /**

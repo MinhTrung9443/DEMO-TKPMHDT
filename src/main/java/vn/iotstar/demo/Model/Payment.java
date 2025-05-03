@@ -1,4 +1,6 @@
 package vn.iotstar.demo.Model;
+import vn.iotstar.demo.DAO.DBConnection;
+
 import java.util.*;
 
 /**
@@ -23,7 +25,8 @@ public class Payment {
      */
     public Payment getPaymentInfo(int orderId) {
         // TODO implement here
-        return null;
+        Payment payment = DBConnection.getPaymentInfo(orderId);
+        return payment;
     }
 
 }

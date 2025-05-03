@@ -43,6 +43,7 @@ public class OrderController {
      */
     public void getOrderHistory(int orderId) {
         // TODO implement here
+        order.getOrderHistory(orderId);
     }
 
     /**
