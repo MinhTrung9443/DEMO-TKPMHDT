@@ -171,4 +171,10 @@ public class Product {
         return false;
     }
 
+    public void compareItem(Object item) {
+        // TODO implement here
+        // do something
+        // do something
+        // do something
+    }
 }

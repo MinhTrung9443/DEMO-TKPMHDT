@@ -25,7 +25,8 @@ public class Payment {
      */
     public Payment getPaymentInfo(int orderId) {
         // TODO implement here
-        Payment payment = DBConnection.getPaymentInfo(orderId);
+        DBConnection dbConnection=new DBConnection();
+        Payment payment = dbConnection.getPaymentInfo(orderId);
         return payment;
     }
 

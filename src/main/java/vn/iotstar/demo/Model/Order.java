@@ -12,7 +12,6 @@ public class Order {
     private String paymentMethod;
     private String status;
     private List<OrderLineItem> orderLineItems;
-    private Customer customer;
     private IPaymentStrategy paymentStrategy;
     private PaymentStrategyFactory paymentStrategyFactory;
     private List<orderStatusHistory> orderStatusHistories;
@@ -27,7 +26,8 @@ public class Order {
      */
     public Order getOrderHistory(int orderId) {
         // TODO implement here
-        Order order = DBConnection.getOrder(orderId);
+        DBConnection dbConnection=new DBConnection();
+        Order order = dbConnection.getOrder(orderId);
         Payment paymnt= payment.getPaymentInfo(orderId);
         // TODO implement here
         //do something
@@ -39,7 +39,9 @@ public class Order {
      */
     public List<Order> getAllOrder() {
         // TODO implement here
-        List<Order> orders = DBConnection.getAllOrder();
+        DBConnection dbConnection=new DBConnection();
+
+        List<Order> orders = dbConnection.getAllOrder();
         return orders;
     }
 
@@ -86,7 +88,8 @@ public class Order {
         // do something
         // do something
         // do something
-        DBConnection.saveOrder(order);
+        DBConnection dbConnection=new DBConnection();
+        dbConnection.saveOrder(order);
     }
 
     public void addOrderLineItem(OrderLineItem orderLineItem) {

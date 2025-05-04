@@ -39,6 +39,7 @@ public class Review {
      */
     public boolean submitReview(int orderId, int productId, int star, String text, String image) {
         // TODO implement here
+        DBConnection dbConnection = new DBConnection();
         validateReviewContent(star,text,image);
         // TODO implement here
         filter(text);
@@ -47,7 +48,7 @@ public class Review {
         // TODO implement here
         uploadImage(image);
         // TODO implement here
-        DBConnection.addReview(this);
+        dbConnection.addReview(this);
         // TODO implement here
         return true;
     }
@@ -88,7 +89,8 @@ public class Review {
      */
     public Review getReview(int orderId, int productId) {
         // TODO implement here
-        Review review = DBConnection.getReview(orderId, productId);
+        DBConnection dbConnection=new DBConnection();
+        Review review = dbConnection.getReview(orderId, productId);
         return review;
     }
 

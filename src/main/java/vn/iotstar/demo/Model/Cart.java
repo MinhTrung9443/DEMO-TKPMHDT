@@ -50,8 +50,8 @@ public class Cart {
      * @return
      */
     public List<String> getPreview(int cartItemId) {
-    	DBConnection conn = new DBConnection();
-    	CartItem cartItem = conn.findCartItemById(cartItemId);
+    	DBConnection dbConnection = new DBConnection();
+    	CartItem cartItem = dbConnection.findCartItemById(cartItemId);
     	Product product = cartItem.getProduct();
     	int quantity = cartItem.getQuantity();
     	List<String> previewProduct = product.getPreview();

@@ -37,9 +37,9 @@ public class Inventory {
      * @param quantity
      */
     public void updateQuantity(int productId, int quantity) {
-    	DBConnection conn = new DBConnection();
-    	Inventory inventory = conn.findInventoryByProductId(productId);
-    	conn.save(inventory);
+    	DBConnection dbConnection = new DBConnection();
+    	Inventory inventory = dbConnection.findInventoryByProductId(productId);
+        dbConnection.save(inventory);
         // TODO implement here
     }
 
