@@ -115,25 +115,25 @@ public class Product {
      * @param quantity 
      * @return
      */
-    public boolean addNewProduct(Product productInfo, int quantity) {
-    	if (validateInfo()) {
+    public int addNewProduct(Product productInfo, int quantity) {
+    	if (validateInfo()==0) {
     		Product newProduct = new Product();
     		BeanUtils.copyProperties(productInfo, newProduct);
     		Inventory inventory = new Inventory(newProduct,quantity);
     		DBConnection conn = new DBConnection();
     		conn.save(inventory);
-    		return true;
+    		return 0;
     	}
         // TODO implement here
-        return false;
+        return validateInfo();
     }
 
     /**
      * @return
      */
-    public boolean validateInfo() {
+    public int validateInfo() {
         // TODO implement here
-        return false;
+        return 0;
     }
 
     /**
@@ -161,14 +161,14 @@ public class Product {
      * @param quantity  
      * @return
      */
-    public boolean updateProduct(Product ProductInfo , int quantity ) {
-    	if (validateInfo())
+    public int updateProduct(Product ProductInfo , int quantity ) {
+    	if (validateInfo()==0)
     	{
     		Inventory inventory = new Inventory();
     		inventory.updateQuantity(ProductInfo.productId, quantity);
     	}
         // TODO implement here
-        return false;
+        return validateInfo();
     }
 
 }

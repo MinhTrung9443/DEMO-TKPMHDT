@@ -41,7 +41,7 @@ public class ProductController {
      * @param quantity
      */
     public void addNewProduct(Product productInfo, int quantity) {
-    	product.addNewProduct(productInfo, quantity);
+    	int success = product.addNewProduct(productInfo, quantity);
         // TODO implement here
     }
 
@@ -58,7 +58,7 @@ public class ProductController {
      * @param quantity
      */
     public void updateProduct(Product ProductInfo, int quantity) {
-    	boolean success = product.updateProduct(ProductInfo, quantity);
+    	int success = product.updateProduct(ProductInfo, quantity);
         // TODO implement here
     }
 
