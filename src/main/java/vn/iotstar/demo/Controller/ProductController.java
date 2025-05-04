@@ -50,6 +50,7 @@ public class ProductController {
      * @param quantity
      */
     public void addNewProduct(Product productInfo, int quantity) {
+    	int success = product.addNewProduct(productInfo, quantity);
         // TODO implement here
     }
 
@@ -57,6 +58,7 @@ public class ProductController {
      * @param productId
      */
     public void displayUpdateProduct(int productId) {
+    	Product pro = product.findById(productId);
         // TODO implement here
     }
 
@@ -65,6 +67,7 @@ public class ProductController {
      * @param quantity
      */
     public void updateProduct(Product ProductInfo, int quantity) {
+    	int success = product.updateProduct(ProductInfo, quantity);
         // TODO implement here
     }
 

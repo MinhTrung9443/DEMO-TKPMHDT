@@ -38,20 +38,20 @@ public class DBConnection {
         return connection;
     }
     //private constructor
-    private DBConnection() {
+    public DBConnection() {
     }
 
     /**
      * @param order
      */
-    public static void saveOrder(Order order) {
+    public void saveOrder(Order order) {
         // TODO implement here
     }
 
     /**
      * @param order
      */
-    public static void updateOrder(Order order) {
+    public void updateOrder(Order order) {
         // TODO implement here
     }
 
@@ -59,7 +59,7 @@ public class DBConnection {
      * @param cartItemId  
      * @return
      */
-    public static CartItem findCartItemById(int cartItemId ) {
+    public CartItem findCartItemById(int cartItemId ) {
         // TODO implement here
         return null;
     }
@@ -68,7 +68,7 @@ public class DBConnection {
      * @param productId 
      * @return
      */
-    public static Product findProductById(int productId) {
+    public Product findProductById(int productId) {
         // TODO implement here
         return null;
     }
@@ -77,7 +77,7 @@ public class DBConnection {
      * @param orderId 
      * @return
      */
-    public static Order getOrder(int orderId) {
+    public Order getOrder(int orderId) {
         // TODO implement here
         return null;
     }
@@ -86,7 +86,7 @@ public class DBConnection {
      * @param orderId 
      * @return
      */
-    public static Payment getPaymentInfo(int orderId) {
+    public Payment getPaymentInfo(int orderId) {
         // TODO implement here
         return null;
     }
@@ -94,7 +94,7 @@ public class DBConnection {
     /**
      * @return
      */
-    public static List<Order> getAllOrder() {
+    public List<Order> getAllOrder() {
         // TODO implement here
         return null;
     }
@@ -102,14 +102,14 @@ public class DBConnection {
     /**
      * @param reivew
      */
-    public static void addReview(Review reivew) {
+    public void addReview(Review reivew) {
         // TODO implement here
     }
 
     /**
      * @param inventory
      */
-    public static void save(Inventory inventory) {
+    public void save(Inventory inventory) {
         // TODO implement here
     }
 
@@ -117,7 +117,7 @@ public class DBConnection {
      * @param productId 
      * @return
      */
-    public static Inventory findInventoryByProductId(int productId) {
+    public Inventory findInventoryByProductId(int productId) {
         // TODO implement here
         return null;
     }
@@ -125,7 +125,7 @@ public class DBConnection {
     /**
      * @param productId
      */
-    public static void checkProductQuantity(int productId) {
+    public void checkProductQuantity(int productId) {
         // TODO implement here
     }
 
@@ -134,7 +134,7 @@ public class DBConnection {
      * @param productId 
      * @return
      */
-    public static Review getReview(int orderId, int productId) {
+    public Review getReview(int orderId, int productId) {
         // TODO implement here
         return null;
     }

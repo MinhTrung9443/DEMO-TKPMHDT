@@ -19,8 +19,10 @@ public class VNPAYPayment implements IPaymentStrategy{
      */
     public boolean processPayment(Order order) {
         // TODO implement here
-        DBConnection.updateOrder(order);
+        DBConnection dbConnection = new DBConnection();
+        dbConnection.updateOrder(order);
         // TODO implement here
+        return true;
     }
 
 }

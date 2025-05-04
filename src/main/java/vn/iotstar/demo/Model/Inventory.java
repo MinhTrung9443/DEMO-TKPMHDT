@@ -1,6 +1,8 @@
 package vn.iotstar.demo.Model;
 import java.util.*;
 
+import vn.iotstar.demo.DAO.DBConnection;
+
 /**
  * 
  */
@@ -26,7 +28,7 @@ public class Inventory {
      * @param newProduct 
      * @param quantity
      */
-    public void Inventory(Product newProduct, int quantity) {
+    public Inventory(Product newProduct, int quantity) {
         // TODO implement here
     }
 
@@ -35,6 +37,9 @@ public class Inventory {
      * @param quantity
      */
     public void updateQuantity(int productId, int quantity) {
+    	DBConnection dbConnection = new DBConnection();
+    	Inventory inventory = dbConnection.findInventoryByProductId(productId);
+        dbConnection.save(inventory);
         // TODO implement here
     }
 

@@ -1,6 +1,8 @@
 package vn.iotstar.demo.Model;
 import java.util.*;
 
+import vn.iotstar.demo.DAO.DBConnection;
+
 /**
  * 
  */
@@ -35,15 +37,19 @@ public class Cart {
                 return item;
             }
         }
-        System.out.println("Không tìm thấy sản phẩm với ID: " + cartItemId + " trong giỏ hàng");
         return null;
     }
 
     /**
      * @param cartItemIds
      */
-    public void getPreviewOrder(List<Integer> cartItemIds ) {
+    public Map<String, List<String>> getPreviewOrder(List<Integer> cartItemIds ) {
+    	for (int i : cartItemIds)
+    	{
+    		List<String> previewProduct = getPreview(i);
+    	}
         // TODO implement here
+    	return null;
     }
 
     /**
@@ -51,8 +57,13 @@ public class Cart {
      * @return
      */
     public List<String> getPreview(int cartItemId) {
+    	DBConnection dbConnection = new DBConnection();
+    	CartItem cartItem = dbConnection.findCartItemById(cartItemId);
+    	Product product = cartItem.getProduct();
+    	int quantity = cartItem.getQuantity();
+    	List<String> previewProduct = product.getPreview();
         // TODO implement here
-        return null;
+        return previewProduct;
     }
 
     /**

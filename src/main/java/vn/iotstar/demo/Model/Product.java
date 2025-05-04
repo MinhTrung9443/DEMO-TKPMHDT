@@ -2,6 +2,10 @@ package vn.iotstar.demo.Model;
 import java.util.*;
 import vn.iotstar.demo.DAO.DBConnection;
 
+import org.springframework.beans.BeanUtils;
+
+import vn.iotstar.demo.DAO.DBConnection;
+
 /**
  * 
  */
@@ -212,7 +216,8 @@ public class Product {
      * @return
      */
     public Product getProductDetail(int productId ) {
-        Product result = DBConnection.findProductById(productId);
+        DBConnection connection = new DBConnection();
+        Product result = connection.findProductById(productId);
         return result;
     }
 
@@ -221,17 +226,25 @@ public class Product {
      * @param quantity 
      * @return
      */
-    public boolean addNewProduct(Product productInfo, int quantity) {
+    public int addNewProduct(Product productInfo, int quantity) {
+    	if (validateInfo()==0) {
+    		Product newProduct = new Product();
+    		BeanUtils.copyProperties(productInfo, newProduct);
+    		Inventory inventory = new Inventory(newProduct,quantity);
+    		DBConnection conn = new DBConnection();
+    		conn.save(inventory);
+    		return 0;
+    	}
         // TODO implement here
-        return false;
+        return validateInfo();
     }
 
     /**
      * @return
      */
-    public boolean validateInfo() {
+    public int validateInfo() {
         // TODO implement here
-        return false;
+        return 0;
     }
 
     /**
@@ -239,8 +252,10 @@ public class Product {
      * @return
      */
     public Product findById(int productId) {
+    	DBConnection conn = new DBConnection();
+    	Product newProduct = conn.findProductById(productId);
         // TODO implement here
-        return null;
+        return newProduct;
     }
 
     /**
@@ -257,9 +272,20 @@ public class Product {
      * @param quantity  
      * @return
      */
-    public boolean updateProduct(Product ProductInfo , int quantity ) {
+    public int updateProduct(Product ProductInfo , int quantity ) {
+    	if (validateInfo()==0)
+    	{
+    		Inventory inventory = new Inventory();
+    		inventory.updateQuantity(ProductInfo.id, quantity);
+    	}
         // TODO implement here
-        return false;
+        return validateInfo();
     }
 
+    public void compareItem(Object item) {
+        // TODO implement here
+        // do something
+        // do something
+        // do something
+    }
 }
