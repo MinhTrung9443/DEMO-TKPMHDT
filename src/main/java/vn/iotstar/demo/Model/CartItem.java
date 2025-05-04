@@ -1,5 +1,6 @@
 package vn.iotstar.demo.Model;
 import java.util.*;
+import vn.iotstar.demo.DAO.DBConnection;
 
 /**
  * 
@@ -60,13 +61,32 @@ public class CartItem {
      * @param quantity 
      * @return
      */
-    public CartItem addProduct(int productId, int quantity) {
+    public CartItem addProduct(int productId, int quantity, int cartId) {
         CartItem result = null;
+        DBConnection connection = new DBConnection();
+        boolean existProduct = connection.existProductInCart(productId, cartId);
+        boolean availableQuantity = false;
+        if (existProduct){
+            for (CartItem existingItem : new Cart().getCartItems()) {
+                if (existingItem.getProduct() != null && existingItem.getProduct().getId() == productId) {
+                    availableQuantity = connection.checkProductQuantity(productId, quantity);
+                    if (availableQuantity) {
+                        int newQuantity = existingItem.getQuantity() + quantity;
+                        boolean updateQuantity = connection.updateProductQuantityInCart(productId, cartId, newQuantity);
+                        if (updateQuantity){
+                            existingItem.setQuantity(newQuantity);
+                            result = existingItem;
+                        }
+                    }
+                    return result;
+                }
+            }
+        }
+
         Product service = new Product();
         Product foundProduct = service.getProductDetail(productId);
         if (foundProduct != null) {
-            Inventory inventory = new Inventory();
-            boolean availableQuantity = inventory.checkProductQuantity(productId, quantity);
+            availableQuantity = connection.checkProductQuantity(productId, quantity);
             if (availableQuantity) {
                 result = new CartItem();
                 result.setProduct(foundProduct);
@@ -80,14 +100,8 @@ public class CartItem {
      * @return
      */
     public Product viewProduct(int productId) {
-        if (this.product != null && this.product.getId() == productId) {
-            Product updatedProduct = new Product().getProductDetail(productId);
-            if (updatedProduct != null) {
-                this.product = updatedProduct;
-            }
-            return this.product;
-        }
-        return null;
+        Product result = new Product().getProductDetail(productId);
+        return result;
     }
 
 }

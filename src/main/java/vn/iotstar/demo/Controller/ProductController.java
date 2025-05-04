@@ -30,8 +30,8 @@ public class ProductController {
         // TODO implement here
         Response<Product> response = new Response<>();
         Product service = new Product();
-        if (product.getProductDetail(productId) != null){
-            response.setData(product);
+        if (service.getProductDetail(productId) != null){
+            response.setData(service);
         } else {
             response.setMessage("Lỗi không tìm thấy thông tin sản phẩm, vui lòng thử lại");
         }
