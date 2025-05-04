@@ -17,17 +17,25 @@ public class Cart {
      */
     private List<CartItem> cartItems;
 
-    /**
-     * 
-     */
-    private int Quantity;
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
+    }
+
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
 
     /**
-     * @param cartItemId 
      * @return
      */
     public CartItem getCartItem(int cartItemId) {
-        // TODO implement here
+        for (CartItem item : cartItems) {
+            if (item.getId() == cartItemId) {
+                item.viewProduct(item.getProduct().getId());
+                return item;
+            }
+        }
+        System.out.println("Không tìm thấy sản phẩm với ID: " + cartItemId + " trong giỏ hàng");
         return null;
     }
 
@@ -48,10 +56,33 @@ public class Cart {
     }
 
     /**
-     * @param cartItemId
+     * @param quantity
      */
-    public void addItem(int cartItemId) {
-        // TODO implement here
+    public CartItem addItem(int productId, int quantity) {
+        // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+        CartItem existingItem = null;
+        for (CartItem item : cartItems) {
+            if (item.getProduct() != null && item.getProduct().getId() == productId) {
+                existingItem = item;
+                break;
+            }
+        }
+
+        if (existingItem != null) {
+            // Nếu sản phẩm đã tồn tại, tăng số lượng
+            existingItem.setQuantity(existingItem.getQuantity() + quantity);
+            return existingItem;
+        } else {
+            // Nếu sản phẩm chưa tồn tại, tạo mới và thêm vào giỏ hàng
+            CartItem newItem = new CartItem();
+            CartItem result = newItem.addProduct(productId, quantity);
+            if (result != null) {
+                result.setId(cartItems.size() + 1);
+                cartItems.add(result);
+                return result;
+            }
+        }
+        return null;
     }
 
     /**

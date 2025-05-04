@@ -4,6 +4,7 @@ import java.util.*;
 import org.springframework.stereotype.Controller;
 
 import vn.iotstar.demo.Model.Product;
+import vn.iotstar.demo.Model.Response;
 
 /**
  * 
@@ -25,8 +26,16 @@ public class ProductController {
     /**
      * 
      */
-    public void viewDetail() {
+    public Response<Product> viewDetail(int productId) {
         // TODO implement here
+        Response<Product> response = new Response<>();
+        Product service = new Product();
+        if (product.getProductDetail(productId) != null){
+            response.setData(product);
+        } else {
+            response.setMessage("Lỗi không tìm thấy thông tin sản phẩm, vui lòng thử lại");
+        }
+        return response;
     }
 
     /**
@@ -57,15 +66,6 @@ public class ProductController {
      */
     public void updateProduct(Product ProductInfo, int quantity) {
         // TODO implement here
-    }
-
-    /**
-     * @param product 
-     * @return
-     */
-    public boolean checkExit(Product product) {
-        // TODO implement here
-        return false;
     }
 
 }

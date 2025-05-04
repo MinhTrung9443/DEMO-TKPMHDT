@@ -12,6 +12,7 @@ public class CartItem {
     public CartItem() {
     }
 
+    private int id;
     /**
      * 
      */
@@ -22,12 +23,28 @@ public class CartItem {
      */
     private int quantity;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     /**
      * @return
      */
     public Product getProduct() {
         // TODO implement here
         return null;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     /**
@@ -39,22 +56,37 @@ public class CartItem {
     }
 
     /**
-     * @param product 
+     * @param productId
      * @param quantity 
      * @return
      */
-    public boolean addProduct(Product product, int quantity) {
-        // TODO implement here
-        return false;
+    public CartItem addProduct(int productId, int quantity) {
+        CartItem result = null;
+        Product service = new Product();
+        Product foundProduct = service.getProductDetail(productId);
+        if (foundProduct != null) {
+            Inventory inventory = new Inventory();
+            boolean availableQuantity = inventory.checkProductQuantity(productId, quantity);
+            if (availableQuantity) {
+                result = new CartItem();
+                result.setProduct(foundProduct);
+                result.setQuantity(quantity);
+            }
+        }
+        return result;
     }
 
     /**
-     * @param product 
-     * @param quantity 
      * @return
      */
-    public Product viewProduct(Product product, int quantity) {
-        // TODO implement here
+    public Product viewProduct(int productId) {
+        if (this.product != null && this.product.getId() == productId) {
+            Product updatedProduct = new Product().getProductDetail(productId);
+            if (updatedProduct != null) {
+                this.product = updatedProduct;
+            }
+            return this.product;
+        }
         return null;
     }
 
