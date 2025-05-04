@@ -1,9 +1,8 @@
 package vn.iotstar.demo.Model;
 import java.util.*;
+import vn.iotstar.demo.DAO.DBConnection;
 
 import org.springframework.beans.BeanUtils;
-
-import vn.iotstar.demo.DAO.DBConnection;
 
 /**
  * 
@@ -15,10 +14,7 @@ public class Product {
      */
     public Product() {
     }
-    /**
-     * 
-     */
-    private int productId;
+    private int id;
     /**
      * 
      */
@@ -84,6 +80,9 @@ public class Product {
      */
     private String productImages;
 
+    public int getId() {
+        return id;
+    }
     /**
      * @param product  
      * @return
@@ -106,8 +105,9 @@ public class Product {
      * @return
      */
     public Product getProductDetail(int productId ) {
-        // TODO implement here
-        return null;
+        DBConnection connection = new DBConnection();
+        Product result = connection.findProductById(productId);
+        return result;
     }
 
     /**
@@ -165,7 +165,7 @@ public class Product {
     	if (validateInfo()==0)
     	{
     		Inventory inventory = new Inventory();
-    		inventory.updateQuantity(ProductInfo.productId, quantity);
+    		inventory.updateQuantity(ProductInfo.id, quantity);
     	}
         // TODO implement here
         return validateInfo();
