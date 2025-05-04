@@ -24,8 +24,8 @@ public class CartController {
     /**
      * @param quantity
      */
-    public String addToCart(int productId, int quantity) {
-        CartItem item = cart.addItem(productId, quantity);
+    public String addToCart(int productId, int quantity, int cartId) {
+        CartItem item = cart.addItem(productId, quantity, cartId);
         if (item != null) {
             return "Thêm sản phẩm thành công";
         }
@@ -41,11 +41,15 @@ public class CartController {
             return new ArrayList<>();
         }
 
-        // Loop for each cartItem to fetch updated details
+        List<CartItem> updateItems = new ArrayList<>();
         for (CartItem item : items) {
+            CartItem updateItem = cart.getCartItem(item.getId());
+            if (updateItem != null){
+                updateItems.add(updateItem);
+            }
             cart.getCartItem(item.getId());
         }
 
-        return items;
+        return updateItems;
     }
 }

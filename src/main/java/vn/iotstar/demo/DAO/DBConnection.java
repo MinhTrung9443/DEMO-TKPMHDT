@@ -142,6 +142,15 @@ public class DBConnection {
     /**
      * @return
      */
+    public boolean checkProductQuantity(int productId, int quantity){
+        return true;
+    }
 
-    
+    public boolean existProductInCart(int productId, int cartId){
+        return true;
+    }
+
+    public boolean updateProductQuantityInCart(int productId, int cartId, int quantity){
+        return true;
+    }
 }

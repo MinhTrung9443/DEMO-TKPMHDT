@@ -52,8 +52,4 @@ public class Inventory {
         return false;
     }
 
-    public boolean checkProductQuantity(int productId, int quantity){
-        return true;
-    }
-
 }
