@@ -1,12 +1,10 @@
-import Customer;
-import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
 public class Order {
     public Order() {
     }
-    private String shippingMethod;
+    private String paymentMethod;
     private String status;
     private List<OrderLineItem> orderLineItems;
     private Customer customer;
@@ -93,6 +91,43 @@ public class Order {
         // TODO implement here
         return false;
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public void setOrderLineItems(List<OrderLineItem> orderLineItems) {
+        this.orderLineItems = orderLineItems;
+    }
+
+    public void setOrderStatusHistories(List<OrderStatusHistory> orderStatusHistories) {
+        this.orderStatusHistories = orderStatusHistories;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     /**
      * @param productId
      */

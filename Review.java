@@ -1,12 +1,11 @@
-import java.io.*;
-import java.util.*;
-
 public class Review {
     public Review() {
     }
+    private int orderId;
+    private int productId;
     private int star;
     private String image;
-    private String content;
+    private String text;
     /**
      * @param orderId 
      * @param productId 
