@@ -4,6 +4,7 @@ import java.util.*;
 public class Product {
     public Product() {
     }
+    private int productId;
     private String name;
     private Float price;
     private String description;
