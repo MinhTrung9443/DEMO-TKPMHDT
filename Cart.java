@@ -30,14 +30,10 @@ public class Cart {
     }
 
     /**
-     * @param product
+     * @param productId 
      * @param quantity
      */
-    public void addProduct(Product product, int quantity) {
-        // TODO implement here
-    }
-
-    public void remove(CartItem cartItem) {
+    public void addToCart(int productId, int quantity) {
         // TODO implement here
     }
 }

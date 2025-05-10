@@ -28,10 +28,6 @@ public class Product {
     private List<Review> reviews;
 
 
-    public Product getSummaryProduct() {
-        // TODO implement here
-        return null;
-    }
 
     public Product getProduct(Product product ) {
         // TODO implement here
@@ -43,15 +39,6 @@ public class Product {
         return null;
     }
 
-    public static Product getProductDetail(Product product) {
-        // TODO implement here
-        return null;
-    }
-
-    public Product findByProduct(Product product) {
-        // TODO implement here
-        return null;
-    }
 
     public void addReview(Review review) {
         // TODO implement here
@@ -85,9 +72,7 @@ public class Product {
         // TODO implement here
         return null;
     }
-    public void save() {
-        // TODO implement here
-    }
+
     public void updateProduct(Product productInfo, int quantity) {
         // TODO implement here
         if (this.validateInfo()) {
@@ -143,6 +128,14 @@ public class Product {
                 return true;
             }
         }
+        return false;
+    }
+        /**
+     * @param product 
+     * @return
+     */
+    public boolean compare(Product product) {
+        // TODO implement here
         return false;
     }
 }

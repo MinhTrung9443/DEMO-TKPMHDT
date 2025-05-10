@@ -60,9 +60,5 @@ public class Review {
         return null;
     }
 
-    public boolean checkAlreadyReview(int productId) {
-        // TODO implement here
-        return false;
-    }
 }
 

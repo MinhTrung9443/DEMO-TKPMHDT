@@ -37,6 +37,15 @@ public class Inventory {
     public static int getQuantity(int productId) {
         return this.quantity;
     }
+
+        /**
+     * @param productId 
+     * @return
+     */
+    public int checkQuantity(int productId) {
+        // TODO implement here
+        return 0;
+    }
 }
 
 

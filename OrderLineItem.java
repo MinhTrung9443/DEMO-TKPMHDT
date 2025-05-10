@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.*;
 public class OrderLineItem {
     public OrderLineItem() {
@@ -19,8 +18,8 @@ public class OrderLineItem {
     private int quantity;
 
 
-    public OrderLineItem getOrderLineItem() {
-        return this;
+    public OrderLineItem(Product product, int quantity) {
+        // TODO implement here
     }
 
 }

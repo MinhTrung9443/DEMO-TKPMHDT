@@ -49,18 +49,15 @@ public class Order {
         // TODO implement here
         return null;
     }
-    public List<OrderLineItem> getOrderLineItems() {
+
+    /**
+     * @return
+     */
+    public Order getSummaryOrder() {
         // TODO implement here
-        for (OrderLineItem item : orderLineItems){
-            item.getOrderLineItem();
-        }
+        return null;
     }
-    public List<OrderStatusHistory> getOrderStatusHistories() {
-        // TODO implement here
-        for (OrderStatusHistory item : orderStatusHistories){
-            item.getOrderStatusHistory();
-        }
-    }
+
     public void displayAllOrders(int customerId) {
         // TODO implement here
         for (Order order : allOrders){
@@ -70,12 +67,7 @@ public class Order {
             }
         }
     }
-    /**
-     * @return
-     */
-    public List<Order> getAllOrders() {
-        // TODO implement here
-    }
+
     /**
      * @param productid 
      * @return

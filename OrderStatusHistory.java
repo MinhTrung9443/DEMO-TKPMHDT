@@ -7,7 +7,7 @@ public class OrderStatusHistory {
     private Date dateTime;
     private String status;
 
-    public OrderStatusHistory getOrderStatusHistory() {
-        return this;
+    public OrderStatusHistory(Date time, String status) {
+        // TODO implement here
     }
 }
