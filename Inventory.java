@@ -3,19 +3,20 @@ import java.io.*;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Inventory {
 
+    private int id;
     /**
      * Default constructor
      */
     public Inventory() {
     }
     private int quantity;
-    private Product product;
+    private int productId;
     /**
-     * @param newProduct 
+     * @param newProduct
      * @param quantity
      */
     public Inventory(Product newProduct, int quantity) {
@@ -26,11 +27,15 @@ public class Inventory {
         // TODO implement here
     }
     /**
-     * @param productId 
+     * @param productId
      * @param quantity
      */
     public Inventory updateQuantity(int productId, int quantity) {
         // TODO implement here
+    }
+
+    public static int getQuantity(int productId) {
+        return this.quantity;
     }
 }
 
