@@ -5,14 +5,10 @@ public class Cart {
     }
     private List<CartItem> cartItems;
     private int quantity;
-    public Cart ViewCart() {
+    public Cart viewCart() {
         // TODO implement here
         for (CartItem item : cartItems) {
-            CartItem cartItem = CartItem.getItem(product, quantity);
-            if (cartItem.checkExistProduct()) {
-                Product product = product.getProduct(product);
-            }
-            else return null;
+            cartItem.getSummaryProduct();
         }
         return null;
     }
