@@ -7,7 +7,7 @@ public class Main {
         System.out.println("Các đánh giá cho sản phẩm thứ nhất: ");
 
         System.out.println(order.getReview(order.getOrderLineItems().get(0).getProductId() ));
-
+        System.out.println("--------------------------");
         System.out.println("Đang tiến hành đánh giá sản phẩm thứ nhất: ");
         Review review = new Review();
         review.submitReview(order.getOrderId(),order.getOrderLineItems().get(0).getProductId(), 5, "Sản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốtSản phẩm rất tốt","Link ảnh Link ảnh");

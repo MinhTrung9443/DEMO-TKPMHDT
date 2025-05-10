@@ -22,21 +22,11 @@ public class Review {
      * @return Review object if found, null otherwise
      */
     public static Review getReview(int orderId, int productId) {
-        if (orderId <= 0 || productId <= 0) {
-            System.out.println("Lỗi: ID đơn hàng hoặc ID sản phẩm không hợp lệ");
-            return null;
-        }
-        
-        Review foundReview = GlobalStorage.reviews.stream()
+
+        return GlobalStorage.reviews.stream()
                 .filter(review -> review.getOrderId() == orderId && review.getProductId() == productId)
                 .findFirst()
                 .orElse(null);
-        
-        if (foundReview == null) {
-            System.out.println("Không tìm thấy đánh giá cho sản phẩm #" + productId + " trong đơn hàng #" + orderId);
-        }
-        
-        return foundReview;
     }
     
     /**
@@ -72,16 +62,11 @@ public class Review {
             return;
         }
 
-        // Step 5: Verify the product exists
-        Product product = Product.getProduct(productId);
-        if (product == null) {
-            System.out.println("Đánh giá không hợp lệ: Không tìm thấy sản phẩm #" + productId);
-            return;
-        }
 
-        // Step 6: Process image upload
+
+        // Step 5: Process image upload
         String imageUrl = uploadImage(image);
-          // Step 7: Set review data
+          // Step 6: Set review data
         this.orderId = orderId;
         this.productId = productId;
         this.text = text;
@@ -89,7 +74,8 @@ public class Review {
         this.image = imageUrl;
         this.reviewDate = new Date(); // Set current date
 
-        // Step 8: Add review to product and global storage
+        // Step 7: Add review to product and global storage
+        Product product = Product.getProduct(productId);
         product.addReview(this);
         GlobalStorage.reviews.add(this);
 
@@ -248,27 +234,7 @@ public class Review {
      * @return URL to the uploaded image
      */
     public String uploadImage(String image) {
-        try {
-            // This is a mock implementation that would be replaced with actual image upload logic
-            // in a production environment (e.g., uploading to a CDN or cloud storage)
-            System.out.println("Đang tải lên hình ảnh: " + image);
-            
-            // Image validation would happen here in a real implementation
-            if (image == null || image.trim().isEmpty()) {
-                return "";
-            }
-            
-            // In a real implementation, this would:
-            // 1. Process the image (resize, optimize, etc.)
-            // 2. Upload to storage
-            // 3. Return the URL
-            
-            // For demo purposes, simply return a mock URL
-            return "https://product-reviews.images.com/" + System.currentTimeMillis() + "/" + image;
-        } catch (Exception e) {
-            System.out.println("Lỗi khi tải lên hình ảnh: " + e.getMessage());
-            return "";
-        }
+        return "https://product-reviews.images.com/" + System.currentTimeMillis() + "/" + image;
     }
     @Override
     public String toString() {

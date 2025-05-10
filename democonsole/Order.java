@@ -29,28 +29,8 @@ public class Order {
      * @return Review object if found, null otherwise
      */
     public Review getReview(int productId) {
-        // Validate product ID
-        if (productId <= 0) {
-            System.out.println("Lỗi: ID sản phẩm không hợp lệ");
-            return null;
-        }
-        
-        // Check if product exists in this order
-        boolean productInOrder = this.orderLineItems.stream()
-                .anyMatch(item -> item.getProductId() == productId);
-                
-        if (!productInOrder) {
-            System.out.println("Lỗi: Sản phẩm #" + productId + " không tồn tại trong đơn hàng #" + this.orderId);
-            return null;
-        }
-        
         // Get the review using static method
         Review review = Review.getReview(this.orderId, productId);
-        
-        if (review == null) {
-            System.out.println("Thông báo: Chưa có đánh giá cho sản phẩm #" + productId + " trong đơn hàng #" + this.orderId);
-        }
-        
         return review;
     }
 
