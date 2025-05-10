@@ -28,29 +28,18 @@ public class Order {
             product.compare(item);
         }
         for (var item : previewOrder){
-            OrderLineItem orderLineItem = new OrderLineItem();
-            orderLineItem.setData(item);
-            orderLineItems.setOrder(this);
-            this.addOrderLineItems(orderLineItem);
+            OrderLineItem orderLineItem = new OrderLineItem(item);
+            cart.remove(item);
+            inventory.updateQuantity(item.getProductId(), item.getQuantity());
+
         }
-        cart.remove(item);
-        inventory.updateQuantity(item.getProductId(), item.getQuantity());
         Payment payment = new Payment(this, total, "Đang chờ thanh toán");
         OrderStatusHistory orderStatusHistory = new OrderStatusHistory(this, LocalDateTime.now(), "Đã tạo đơn hàng");
         this.addOrderStatusHistory(orderStatusHistory);
         if (paymentMethod=="VNPAY"){
-            payment.paymentSuccess();
-            // TODO implement here
-            if (payment.isSuccess()){
-                OrderStatusHistory orderStatusHistory = new OrderStatusHistory(this, LocalDateTime.now(), "Đã thanh toán");
-                this.addOrderStatusHistory(orderStatusHistory);
-            }
-            else{
-                // TODO implement here
-            }
+            payment.handleVNPAY();
         }else if (paymentMethod=="COD"){
-            OrderStatusHistory orderStatusHistory = new OrderStatusHistory(this, LocalDateTime.now(), "Chờ đóng gói");
-            this.addOrderStatusHistory(orderStatusHistory);
+            payment.handleCOD();
         }
         // TODO implement here
     }
