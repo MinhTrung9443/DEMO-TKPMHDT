@@ -1,16 +1,23 @@
 import java.util.*;
 
 public class Cart {
+    private int id;
     public Cart() {
     }
     private List<CartItem> cartItems;
     private int quantity;
     public Cart viewCart() {
         // TODO implement here
-        for (CartItem item : cartItems) {
-            cartItem.getSummaryProduct();
+        if (cartItems.isEmpty()) {
+            System.out.println("Giỏ hàng ID " + id + " trống!");
+            return;
         }
-        return null;
+        System.out.println("Thông tin giỏ hàng ID " + id + ":");
+        for (CartItem item : cartItems) {
+            System.out.println("Mục ID: " + item.getId());
+            System.out.println("Tên sản phẩm: " + item.getProductName(item.getProductId()));
+            System.out.println("Số lượng: " + item.getQuantity());
+        }
     }
     /**
      * @param listCartItemId
@@ -24,7 +31,7 @@ public class Cart {
     }
 
     /**
-     * @param product 
+     * @param product
      * @param quantity
      */
     public void addProduct(Product product, int quantity) {
