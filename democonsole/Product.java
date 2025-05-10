@@ -9,40 +9,20 @@ public class Product {
     private String name;
     private Float price;
     private String description;
-    private String category;
-    private String ingredients;
-    private String origin;
     private Date manufactureDate;
     private Date expiryDate;
     private Date importDate;
-    private String usageInstructions;
-    private Float volume;
-    private String productImages;
     private List<Review> reviews;
 
-    public Product(int productId, String category, String description, Date expiryDate, Date importDate, String ingredients, Date manufactureDate, String name, String origin, Float price, String productImages, List<Review> reviews, String usageInstructions, Float volume) {
+    public Product(int productId, String description, Date expiryDate, Date importDate , Date manufactureDate, String name,  Float price, List<Review> reviews) {
         this.productId = productId;
-        this.category = category;
         this.description = description;
         this.expiryDate = expiryDate;
         this.importDate = importDate;
-        this.ingredients = ingredients;
         this.manufactureDate = manufactureDate;
         this.name = name;
-        this.origin = origin;
         this.price = price;
-        this.productImages = productImages;
         this.reviews = reviews;
-        this.usageInstructions = usageInstructions;
-        this.volume = volume;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getDescription() {
@@ -69,14 +49,6 @@ public class Product {
         this.importDate = importDate;
     }
 
-    public String getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
-    }
-
     public Date getManufactureDate() {
         return manufactureDate;
     }
@@ -93,14 +65,6 @@ public class Product {
         this.name = name;
     }
 
-    public String getOrigin() {
-        return origin;
-    }
-
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
-
     public Float getPrice() {
         return price;
     }
@@ -109,21 +73,11 @@ public class Product {
         this.price = price;
     }
 
-    public int getProductId() {
-        return productId;
-    }
-
     public void setProductId(int productId) {
         this.productId = productId;
     }
 
-    public String getProductImages() {
-        return productImages;
-    }
-
-    public void setProductImages(String productImages) {
-        this.productImages = productImages;
-    }    public List<Review> getReviews() {
+    public List<Review> getReviews() {
         return reviews;
     }
 
@@ -131,52 +85,11 @@ public class Product {
         this.reviews = reviews;
     }
 
-    /**
-     * Calculates the average rating for this product
-     * 
-     * @return Average rating (0-5) or 0 if no reviews
-     */
-    public double getAverageRating() {
-        if (reviews == null || reviews.isEmpty()) {
-            return 0.0;
-        }
-        
-        int totalStars = reviews.stream()
-                .mapToInt(Review::getStar)
-                .sum();
-                
-        return (double) totalStars / reviews.size();
-    }
-    
-    /**
-     * Gets the total number of reviews for this product
-     * 
-     * @return Number of reviews
-     */
-    public int getReviewCount() {
-        return reviews == null ? 0 : reviews.size();
+    public int getProductId() {
+        return productId;
     }
 
-    public String getUsageInstructions() {
-        return usageInstructions;
-    }
 
-    public void setUsageInstructions(String usageInstructions) {
-        this.usageInstructions = usageInstructions;
-    }
-
-    public Float getVolume() {
-        return volume;
-    }
-
-    public void setVolume(Float volume) {
-        this.volume = volume;
-    }    /**
-     * Retrieves a product by its ID
-     * 
-     * @param productId ID of the product to retrieve
-     * @return Product object if found, null otherwise
-     */
     public static Product getProduct(int productId) {
         if (productId <= 0) {
             System.out.println("Lỗi: ID sản phẩm không hợp lệ");
