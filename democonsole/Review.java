@@ -37,7 +37,9 @@ public class Review {
         }
         
         return foundReview;
-    }/**
+    }
+    
+    /**
      * Submits a product review after validation
      * 
      * @param orderId ID of the order containing the purchased product
@@ -47,56 +49,53 @@ public class Review {
      * @param image Image path or URL for the review
      */
     public void submitReview(int orderId, int productId, int star, String text, String image) {
-        try {
-            // Step 1: Validate review content and format
-            if (!validateReview(star, text, image)) {
-                return; // Validation failed, error message shown in validateReview
-            }
-            
-            // Step 2: Filter inappropriate content
-            if (!filter(text)) {
-                return; // Filter failed, error message shown in filter
-            }
-            
-            // Step 3: Verify order exists and product is part of that order
-            Order order = Order.findByOrderId(orderId);
-            if (order == null) {
-                System.out.println("Đánh giá không hợp lệ: Không tìm thấy đơn hàng #" + orderId);
-                return;
-            }
-            
-            // Step 4: Check if product has already been reviewed
-            if (!order.checkAlreadyReview(productId)) {
-                System.out.println("Đánh giá không hợp lệ: Sản phẩm này đã được đánh giá");
-                return;
-            }
-            
-            // Step 5: Verify the product exists
-            Product product = Product.getProduct(productId);
-            if (product == null) {
-                System.out.println("Đánh giá không hợp lệ: Không tìm thấy sản phẩm #" + productId);
-                return;
-            }
-            
-            // Step 6: Process image upload
-            String imageUrl = uploadImage(image);
-              // Step 7: Set review data
-            this.orderId = orderId;
-            this.productId = productId;
-            this.text = text;
-            this.star = star;
-            this.image = imageUrl;
-            this.reviewDate = new Date(); // Set current date
-            
-            // Step 8: Add review to product and global storage
-            product.addReview(this);
-            GlobalStorage.reviews.add(this);
-            
-            System.out.println("Đánh giá đã được gửi thành công!");
-        } catch (Exception e) {
-            System.out.println("Đã xảy ra lỗi khi gửi đánh giá: " + e.getMessage());
+        // Step 1: Validate review content and format
+        if (!validateReview(star, text, image)) {
+            return; // Validation failed, error message shown in validateReview
         }
-    }/**
+
+        // Step 2: Filter inappropriate content
+        if (!filter(text)) {
+            return; // Filter failed, error message shown in filter
+        }
+
+        // Step 3: Verify order exists and product is part of that order
+        Order order = Order.findByOrderId(orderId);
+        if (order == null) {
+            System.out.println("Đánh giá không hợp lệ: Không tìm thấy đơn hàng #" + orderId);
+            return;
+        }
+
+        // Step 4: Check if product has already been reviewed
+        if (!order.checkAlreadyReview(productId)) {
+            System.out.println("Đánh giá không hợp lệ: Sản phẩm này đã được đánh giá");
+            return;
+        }
+
+        // Step 5: Verify the product exists
+        Product product = Product.getProduct(productId);
+        if (product == null) {
+            System.out.println("Đánh giá không hợp lệ: Không tìm thấy sản phẩm #" + productId);
+            return;
+        }
+
+        // Step 6: Process image upload
+        String imageUrl = uploadImage(image);
+          // Step 7: Set review data
+        this.orderId = orderId;
+        this.productId = productId;
+        this.text = text;
+        this.star = star;
+        this.image = imageUrl;
+        this.reviewDate = new Date(); // Set current date
+
+        // Step 8: Add review to product and global storage
+        product.addReview(this);
+        GlobalStorage.reviews.add(this);
+
+        System.out.println("Đánh giá đã được gửi thành công!");
+    }
+    /**
      * Validates a review based on rating, text content, and image
      * 
      * @param star Rating given by customer (1-5)
