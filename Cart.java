@@ -22,21 +22,11 @@ public class Cart {
     public Object getPreviewOrder(List<Integer> listCartItemId) {
         // TODO implement here
         for (int cartItemId : listCartItemId) {
-            Object previewOrder = getPreview(cartItemId);
+            Object previewOrder = Product.getPreviewInfo(cartItemId);
         }
         return null;
     }
-    /**
-     * @param cartItemId 
-     * @return
-     */
-    public Object getPreview(int cartItemId) {
-        // TODO implement here
-        CartItem cartItem = CartItem.findById(cartItemId);
-        Product product = cartItem.getProduct();
-        int quantity = cartItem.getQuantity();
-        return null;
-    }
+
     /**
      * @param product 
      * @param quantity

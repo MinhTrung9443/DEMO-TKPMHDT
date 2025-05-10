@@ -1,5 +1,4 @@
 
-import java.io.*;
 import java.util.*;
 public class Product {
     public Product() {
@@ -29,7 +28,7 @@ public class Product {
     /**
      * @return
      */
-    public List<String> getPreview() {
+    public static  List<String> getPreviewInfo(int cartItemId) {
         // TODO implement here
         return null;
     }
@@ -68,9 +67,11 @@ public class Product {
      */
     public void addNewProduct(Product productInfo, int quantity) {
         // TODO implement here
-        this.validateInfo();
-        Inventory inventory = new Inventory(productInfo, quantity);
-        inventory.save();
+        if (this.validateInfo())
+        {
+            Inventory inventory = new Inventory(productInfo, quantity);
+            inventory.save();
+        }
     }
     /**
      * @return
@@ -99,8 +100,7 @@ public class Product {
     }
     public void updateProduct(Product productInfo, int quantity) {
         // TODO implement here
-        boolean result=this.validateInfo();
-        if (result) {
+        if (this.validateInfo()) {
             Inventory inventory = new Inventory();
             inventory.updateQuantity(productId, quantity);
             inventory.save();
