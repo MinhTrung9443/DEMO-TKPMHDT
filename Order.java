@@ -44,12 +44,15 @@ public class Order {
         // TODO implement here
     }
     
-
+    public Order getOrderData() {
+        // TODO implement here
+    }
     public Order getOrderHistory() {
         // TODO implement here
-        List<OrderLineItem> orderLineItem= this.getOrderLineItems();
-        List<OrderStatusHistory> orderStatusHistory = this.getOrderStatusHistories();
-        Payment payment = Payment.getPaymentInfo(this.getOrderId());
+        Payment payment = new Payment();
+        getOrderData();
+        Payment payment = payment.getPaymentInfo(orderId);
+        return null;
     }
     public List<OrderLineItem> getOrderLineItems() {
         // TODO implement here
