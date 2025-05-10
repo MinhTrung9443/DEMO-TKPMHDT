@@ -15,11 +15,14 @@ public class Review {
      */
     public void submitReview(int orderId, int productId, int star, String text, String image) {
         // TODO implement here
-        validateReview(star, text, image);
-        filter(text);
-        checkAlreadyReview(productId);
-        uploadImage(image);
-        product.addReview(this);
+        if (validateReview(star, text, image))
+            if (filter(text))
+                if (checkAlreadyReview(productId))
+                {
+                    uploadImage(image);
+                    product.addReview(this);
+                }
+        
     }
     /**
      * @param star 

@@ -5,7 +5,6 @@ public class Cart {
     public Cart() {
     }
     private List<CartItem> cartItems;
-    private int quantity;
     public Cart viewCart() {
         // TODO implement here
         if (cartItems.isEmpty()) {
@@ -22,10 +21,10 @@ public class Cart {
     /**
      * @param listCartItemId
      */
-    public Object getPreviewOrder(List<Integer> listCartItemId) {
+    public Order getPreviewOrder(List<Integer> cartItemIds) {
         // TODO implement here
-        for (int cartItemId : listCartItemId) {
-            Object previewOrder = Product.getPreviewInfo(cartItemId);
+        for (Integer cartItemId : cartItemIds) {
+            Product previewOrder = Product.getPreviewInfo(cartItemId);
         }
         return null;
     }

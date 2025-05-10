@@ -14,6 +14,10 @@ public class Payment {
         // TODO implement here
         return null;
     }
+    public static String getPaymentStatus(int orderId) {
+        // TODO implement here
+        return null;
+    }
 }
 
 

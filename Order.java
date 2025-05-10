@@ -11,31 +11,26 @@ public class Order {
     private List<OrderStatusHistory> orderStatusHistories;
     private int orderId;
 
-    public void addOrderLineItem(OrderLineItem orderLineItem)[
-        // TODO implement here
-    ]
-
     public int getOrderId() {
         return orderId;
     }
 
-    public String makePayment(Map<String, Object> previewOrder, String paymentMethod) {
-        Cart cart = new Cart();
-        Inventory inventory = new Inventory();
-
+    public String makePayment(Order previewOrder, String paymentMethod) {
         for (var item : previewOrder){
             product.checkQuantity(item);
             product.compare(item);
         }
         for (var item : previewOrder){
-            OrderLineItem orderLineItem = new OrderLineItem(item);
-            cart.remove(item);
-            inventory.updateQuantity(item.getProductId(), item.getQuantity());
+            //do something to get product and quantity
+            OrderLineItem orderLineItem = new OrderLineItem(product, quantity);
+            // TODO implement here
+            Cart.remove(productId);
+            // TODO implement here
+            Inventory.updateQuantity(productId, quantity);
 
         }
-        Payment payment = new Payment(this, total, "Đang chờ thanh toán");
-        OrderStatusHistory orderStatusHistory = new OrderStatusHistory(this, LocalDateTime.now(), "Đã tạo đơn hàng");
-        this.addOrderStatusHistory(orderStatusHistory);
+        Payment payment = new Payment(orderId, total, "Đang chờ thanh toán");
+        OrderStatusHistory orderStatusHistory = new OrderStatusHistory(LocalDateTime.now(), "Đã tạo đơn hàng");
         if (paymentMethod=="VNPAY"){
             payment.handleVNPAY();
         }else if (paymentMethod=="COD"){
@@ -49,9 +44,9 @@ public class Order {
     }
     public Order getOrderHistory() {
         // TODO implement here
-        Payment payment = new Payment();
-        getOrderData();
-        Payment payment = payment.getPaymentInfo(orderId);
+        Order orderData=this.getOrderData();
+        Payment payment = Payment.getPaymentInfo(orderId);
+        // TODO implement here
         return null;
     }
     public List<OrderLineItem> getOrderLineItems() {
@@ -66,8 +61,14 @@ public class Order {
             item.getOrderStatusHistory();
         }
     }
-    public void displayAllOrders() {
-        List<Order> orders = getAllOrders();
+    public void displayAllOrders(int customerId) {
+        // TODO implement here
+        for (Order order : allOrders){
+            if (order.getCustomer().getId() == customerId){
+                order.getSummaryOrder();
+                String paymentStatus=Payment.getPaymentStatus(order.getOrderId());
+            }
+        }
     }
     /**
      * @return
