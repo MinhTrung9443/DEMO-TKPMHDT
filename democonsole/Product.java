@@ -9,9 +9,15 @@ public class Product {
     private String name;
     private Float price;
     private String description;
+    private String category;
+    private String ingredients;
+    private String origin;
     private Date manufactureDate;
     private Date expiryDate;
     private Date importDate;
+    private String usageInstructions;
+    private Float volume;
+    private String productImages;
     private List<Review> reviews;
 
     public Product(int productId, String description, Date expiryDate, Date importDate , Date manufactureDate, String name,  Float price, List<Review> reviews) {
