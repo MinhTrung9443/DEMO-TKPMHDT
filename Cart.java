@@ -18,9 +18,7 @@ public class Cart {
             System.out.println("Số lượng: " + item.getQuantity());
         }
     }
-    /**
-     * @param listCartItemId
-     */
+
     public Order getPreviewOrder(List<Integer> cartItemIds) {
         // TODO implement here
         for (Integer cartItemId : cartItemIds) {
@@ -29,12 +27,9 @@ public class Cart {
         return null;
     }
 
-    /**
-     * @param productId 
-     * @param quantity
-     */
     public void addToCart(int productId, int quantity) {
         // TODO implement here
+        CartItem item = new CartItem(productId, quantity);
     }
 }
 
